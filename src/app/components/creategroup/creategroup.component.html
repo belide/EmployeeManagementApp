@@ -1,0 +1,50 @@
+<div class="card card-body mb-3 text-center" style = "width: 75%">
+    <h2> {{title}} </h2>
+    <form #createGroupForm="ngForm" (ngSubmit)="createGroup(creategroupform)">
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"> Group Name</label>
+        <div class="col-sm-9">
+            <input
+                    type="text" autocomplete="off"
+            [(ngModel)]="groupData.groupName"
+            [ngClass]="{'is-invalid':contactsGroupName.errors && contactsGroupName.touched}"
+            class="form-control"
+            name="groupName"
+            #contactsGroupName="ngModel"
+            required
+            minlength="2">
+            <div [hidden]="!contactsGroupName.errors?.required" class="invalid-feedback">
+            Group Name is Required
+        </div>
+
+        <div [hidden]="!contactsGroupName.errors?.minlength" class="invalid-feedback">
+        Must be at least 2 characters
+    </div>
+</div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label"> Group Description</label>
+    <div class="col-sm-9">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                type="text" autocomplete="off"
+        [(ngModel)]="groupData.groupDescription"
+        [ngClass]="{'is-invalid':groupDescription.errors && groupDescription.touched}"
+        class="form-control"
+        name="description"
+        #groupDescription="ngModel"
+        required
+        minlength="2">
+        </textarea>
+        <div [hidden]="!groupDescription.errors?.required" class="invalid-feedback">
+        Description is Required
+    </div>
+
+    <div [hidden]="!groupDescription.errors?.minlength" class="invalid-feedback">
+    Must be at least 2 characters
+</div>
+</div>
+</div>
+<button [disabled]="!createGroupForm.form.valid" class="btn btn-primary mb-3"> {{title}}</button>
+</form>
+</div>

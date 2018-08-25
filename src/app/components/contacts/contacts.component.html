@@ -1,0 +1,72 @@
+<div class="row">
+    <a routerLink="/createcontact" class="btn btn-primary mb-3">Add Contact To Group</a>
+    <a routerLink="/groups" class="btn btn-primary mb-3 ml-3">Back To Groups</a>
+</div>
+<div *ngIf = "this.contactsFetched == true">
+        <h2>Select any row to Manage Contacts</h2>
+        <form>
+                <div class="form-group">
+                  <label>Page Size</label>
+                  <select class="form-control" (change)="onPageSizeChanged()"
+                  name = "pageSize" [(ngModel)] = "paginationPageSize" #pageSize = "ngModel">
+                    <option value="10">10</option>
+                    <option value = "50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                  </select>
+                </div>               
+              </form>
+        <ng-container *ngIf = "this.rowsSelected == true">
+
+<button type="button" class="btn btn-sm btn-outline-secondary mr-3 mb-3" (click) = "editContact()" [disabled] = "contactStatus === false">Edit</button>
+<button type="button" class="btn btn-sm btn-outline-danger mr-3 mb-3" (click) = "deleteContact()" [disabled] = "contactStatus === false">Delete</button>
+<button type="button" class="btn btn-sm btn-primary mr-3 mb-3" (click) = "changeState()">{{stateButton}}</button>
+        </ng-container>
+<ag-grid-angular
+#agGrid id="myGrid" (selectionChanged)="onSelectionChanged($event)"
+(gridReady)="onGridReady($event)"
+    style="width: 1000px; height: 500px;" 
+    class="ag-theme-balham"
+    [rowData]="listOfContacts"  
+    [columnDefs]="columnDefs"
+    [gridAutoHeight]="true"
+    [rowHeight] = 40
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [rowSelection] = "rowSelection"
+    [enableColResize]="true"
+    [pagination]="true"
+    [paginationPageSize]="paginationPageSize"
+    [paginationNumberFormatter]="paginationNumberFormatter"
+    >
+</ag-grid-angular>
+</div>
+<!-- <div *ngIf = "listOfContacts.length > 0">
+<div class="row">
+
+    <div class="col-sm-6 mt-3" *ngFor = "let contact of listOfContacts" style="max-width: 21rem;">
+    <div class="card">
+        <h5 class="card-header">{{contact.employeeName}}</h5>
+        <div class="card-body">
+            <ul>
+                <li>Name: {{contact.employeeName}}</li>
+                <li>Employee ID: {{contact.employeeId}}</li>
+                <li>Email: {{contact.email}}</li>
+                <li>Phone: {{contact.phone}}</li>
+                <li>Aadhaar: {{contact.aadhaar}}</li>
+            </ul>
+            <div class="btn-group mt-3">
+    <button type="button" class="btn btn-sm btn-outline-secondary" (click) = "editContact(contact)">Edit</button>
+    <button type="button" class="btn btn-sm btn-outline-danger" (click) = "deleteContact(contact)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+<div *ngIf = "listOfContacts.length === 0">
+        No Contacts Added to this group! Start Adding Contacts!!!
+        </div> -->

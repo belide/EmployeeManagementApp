@@ -1,0 +1,97 @@
+<div class="card card-body mb-3 text-center" style = "width: 75%">
+    <h2> {{title}}{{groupName}} </h2>
+    <form #createContactForm="ngForm" (ngSubmit)="createContact(createContactForm)">
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"> Employee Name</label>
+        <div class="col-sm-9">
+            <input type="text" autocomplete="off" [(ngModel)]="contactData.employeeName"
+            [ngClass]="{'is-invalid':contactFullName.errors && contactFullName.touched}"
+            class="form-control"
+            name="employeeName"
+            #contactFullName="ngModel"
+            required
+            minlength="2">
+            <div [hidden]="!contactFullName.errors?.required" class="invalid-feedback">
+            Contact Name is Required
+        </div>
+        <div [hidden]="!contactFullName.errors?.minlength" class="invalid-feedback">
+        Must be at least 2 characters
+    </div>
+</div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label"> Employee Id</label>
+    <div class="col-sm-9">
+        <input type="text" autocomplete="off"
+        [(ngModel)]="contactData.employeeId"
+        [ngClass]="{'is-invalid':contactEmployeeId.errors && contactEmployeeId.touched}"
+        class="form-control"
+        name="employeeId"
+        #contactEmployeeId="ngModel"
+        required>
+        <div [hidden]="!contactEmployeeId.errors?.required" class="invalid-feedback">
+        Employee Id is Required
+    </div>
+</div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label"> Email</label>
+    <div class="col-sm-9">
+        <input type="text" autocomplete="off"
+        [(ngModel)]="contactData.email"
+        [ngClass]="{'is-invalid':contactEmail.errors && contactEmail.touched}"
+        class="form-control"
+        name="email"
+        #contactEmail="ngModel"
+        required
+        pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(inmar)\.com$">
+        <div [hidden]="!contactEmail.errors?.required" class="invalid-feedback">
+        Contact Email is Required
+    </div>
+    <div [hidden]="!contactEmail.errors?.pattern" class="invalid-feedback">
+            Email is invalid
+        </div>
+</div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label"> Phone</label>
+    <div class="col-sm-9">
+        <input type="text" autocomplete="off"
+        [(ngModel)]="contactData.phone"
+        [ngClass]="{'is-invalid':contactPhone.errors && contactPhone.touched}"
+        class="form-control"
+        name="phone"
+        #contactPhone="ngModel"
+        pattern="[1-9]{1}[0-9]{9}"
+        required>
+        <div [hidden]="!contactPhone.errors?.required" class="invalid-feedback">
+        Phone Number is Required
+    </div>
+    <div [hidden]="!contactPhone.errors?.pattern" class="invalid-feedback">
+            Phone Number is in wrong format
+        </div>
+</div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label"> Aadhaar</label>
+    <div class="col-sm-9">
+        <input type="text" autocomplete="off"
+        [(ngModel)]="contactData.aadhaar"
+        [ngClass]="{'is-invalid':contactAadhaar.errors && contactAadhaar.touched}"
+        class="form-control"
+        name="aadhaar"
+        #contactAadhaar="ngModel"
+        required>
+        <div [hidden]="!contactAadhaar.errors?.required" class="invalid-feedback">
+        Aadhaar Number is Required
+    </div>
+</div>
+</div>
+
+<button [disabled]="!createContactForm.form.valid" class="btn btn-primary mb-3">{{submitText}}</button>
+</form>
+</div>

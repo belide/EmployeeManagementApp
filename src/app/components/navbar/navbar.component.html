@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand navbar-dark bg-primary mb-4">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand">Employee Contacts Management</a>
+      <div>
+        <ul class="navbar-nav ml-auto">
+         
+          <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/register" class="nav-link">Register</a>
+          </li>
+          <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.loggedIn()"><a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/groups" class="nav-link">Groups</a>
+            </li>  
+        </ul> 
+      </div>
+    </div>
+  </nav>

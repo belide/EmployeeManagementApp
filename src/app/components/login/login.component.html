@@ -1,0 +1,42 @@
+<div class="card card-body mb-3 text-center" style = "width: 75%">
+    <h2> Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm)">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label"> Email</label>
+        <div class="col-sm-9">
+        <input 
+          type="text" autocomplete="off"
+          [(ngModel)]="email" 
+          [ngClass]="{'is-invalid':loginEmail.errors && loginEmail.touched}"
+          class="form-control" 
+          name="email"
+          #loginEmail="ngModel"
+          required
+          pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(inmar)\.com$">
+          <div [hidden]="!loginEmail.errors?.required" class="invalid-feedback">
+              Email is Required
+            </div>
+      
+            <div [hidden]="!loginEmail.errors?.pattern" class="invalid-feedback">
+                Email is invalid
+            </div>
+      </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+        <input type="password" autocomplete="off"
+          [(ngModel)]="password" 
+          [ngClass]="{'is-invalid':loginPassword.errors && loginPassword.touched}"
+          class="form-control" 
+          name="userPassword"
+          #loginPassword="ngModel"
+          required>
+        <div [hidden]="!loginPassword.errors?.required" class="invalid-feedback">
+          Password Required
+        </div>
+      </div>
+      </div>
+      <button [disabled]="!loginForm.form.valid" class="btn btn-primary mb-3">Login</button>
+    </form>
+  </div>
