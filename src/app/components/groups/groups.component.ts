@@ -20,9 +20,9 @@ export class GroupsComponent implements OnInit {
     groupStatus:any;
 
     columnDefs = [
-        {headerName: 'Group Name', field: 'groupName' },
-        {headerName: 'Group Description', field: 'groupDescription' },
-        {headerName: 'Status', field: 'status'},
+        {headerName: 'Group Name', field: 'groupName', width: 400 },
+        {headerName: 'Group Description', field: 'groupDescription', width: 400 },
+        {headerName: 'Status', field: 'status', width: 200},
         {headerName: 'Created By', field: 'createdBy', hide: true},
         {headerName: 'id', field: '_id', hide: true}
     ];

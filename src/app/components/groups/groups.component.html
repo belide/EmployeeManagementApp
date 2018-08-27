@@ -24,6 +24,8 @@
 <button type="button" class="btn btn-sm btn-danger mr-3 mb-3" (click) = "deleteGroup()" [disabled] = "groupStatus === false">Delete</button>
 <button type="button" class="btn btn-sm btn-primary mr-3 mb-3" (click) = "changeState()">{{stateButton}}</button>
         </ng-container>
+		<div>
+    <div>
 <ag-grid-angular
 #agGrid id="myGrid" (selectionChanged)="onSelectionChanged($event)"
 (gridReady)="onGridReady($event)"
@@ -41,6 +43,8 @@
     [paginationNumberFormatter]="paginationNumberFormatter"
     >
 </ag-grid-angular>
+</div>
+</div>
 </div>
 <!--<div *ngIf = "contactGroups.length > 0">
 <div class="row">
