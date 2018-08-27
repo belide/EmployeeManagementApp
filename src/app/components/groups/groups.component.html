@@ -29,7 +29,7 @@
 <ag-grid-angular
 #agGrid id="myGrid" (selectionChanged)="onSelectionChanged($event)"
 (gridReady)="onGridReady($event)"
-    style="width: 500px; height: 50px;" 
+    style="width: 1000px; height: 50px;" 
     class="ag-theme-balham"
     [rowData]="contactGroups"  
     [columnDefs]="columnDefs"
@@ -46,25 +46,3 @@
 </div>
 </div>
 </div>
-<!--<div *ngIf = "contactGroups.length > 0">
-<div class="row">
-
-    <div class="col-sm-6 mt-3" *ngFor = "let group of contactGroups">
-        <div class="card">
-            <h5 class="card-header">{{group.groupName}}</h5>
-            <div class="card-body">
-                <p class="card-text">{{group.groupDescription}}</p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary" (click) = "fetchContacts(group)">Contacts</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" (click) = "editGroupInfo(group)">Edit</button>
-                    <button type="button" class="btn btn-sm btn-outline-danger" (click) = "deleteGroup(group)">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-</div>
-<div *ngIf = "contactGroups.length === 0">
-No groups Created! Start Creating Groups!!!
-</div>-->
